@@ -23,24 +23,24 @@
     // $warriorTwo = new Character(20, 6);
     // $warriorTwo->describe();
 
-    $warriorOne = new Warrior(20, 6);
+    $warriorOne = new Warrior(15, 20, 6);
     echo 'Guerrier<br>';
     $warriorOne->describe();
     echo '<br><br>';
 
-    $wizardOne = new Wizard(10, 0);
+    $wizardOne = new Wizard(1, 10, 0);
     echo 'Sorcier<br>';
     $wizardOne->describe();
     echo '<br><br>';
 
-    $archerOne = new Archer(12, 3);
+    $archerOne = new Archer(1, 12, 3);
     echo 'Archer<br>';
     $archerOne->describe();
     echo '<br><br>';
 
-    $warriorOne->setSword(10);
-    $archerOne->setBow(10);
-    $wizardOne->setStaff(10);
+    // $warriorOne->setSword(15);
+    // $wizardOne->setStaff(1);
+    // $archerOne->setBow(1);
 
 
     echo 'Le guerrier attaque le sorcier !<br> Il subît '.$warriorOne->getSword().' points de dégâts ! ';

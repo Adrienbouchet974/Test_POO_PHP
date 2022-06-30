@@ -8,6 +8,10 @@ class Warrior extends Character {
     private $sword;
 
     // Constructor
+    public function __construct ($s, $a, $b) {
+        parent::__construct($a, $b);
+        $this->setSword($s);
+    }
 
     // Getters
     public function getSword() {
@@ -29,6 +33,10 @@ class Wizard extends Character {
     private $staff;
 
     // Constructor
+    public function __construct ($s, $a, $b) {
+        parent::__construct($a, $b);
+        $this->setStaff($s);
+    }
 
     // Getters
     public function getStaff() {
@@ -50,6 +58,10 @@ class Archer extends Character {
     private $bow;
 
     // Constructor
+    public function __construct ($s, $a, $b) {
+        parent::__construct($a, $b);
+        $this->setBow($s);
+    }
 
     // Getters
     public function getBow() {
