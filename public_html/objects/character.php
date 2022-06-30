@@ -38,7 +38,7 @@ class Character {
 
     // Methods
     public function describe() {
-        echo "Je suis un guerrier avec   ". $this->life ." point de vie et ". $this->def." point de défense.";
+        echo "J'ai ". $this->life ." points de vie et ". $this->def." points de défense.";
     }
 
 }
