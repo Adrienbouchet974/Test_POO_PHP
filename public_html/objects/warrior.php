@@ -31,21 +31,29 @@ class Wizard extends Character {
 
     // Attributes
     private $staff;
+    private $heal;
 
     // Constructor
-    public function __construct ($s, $a, $b) {
+    public function __construct ($s, $h, $a, $b) {
         parent::__construct($a, $b);
         $this->setStaff($s);
+        $this->setHeal($h);
     }
 
     // Getters
     public function getStaff() {
         return $this->staff;
     }
+    public function getHeal() {
+        return $this->heal;
+    }
 
     // Setters
     public function setStaff($staff) {
         $this->staff = $staff;
+    }
+    public function setHeal($heal) {
+        $this->heal = $heal;
     }
 
     // Methods

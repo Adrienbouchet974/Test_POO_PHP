@@ -23,17 +23,17 @@
     // $warriorTwo = new Character(20, 6);
     // $warriorTwo->describe();
 
-    $warriorOne = new Warrior(15, 20, 6);
+    $warriorOne = new Warrior(1, 20, 6);
     echo 'Guerrier<br>';
     $warriorOne->describe();
     echo '<br><br>';
 
-    $wizardOne = new Wizard(1, 10, 0);
+    $wizardOne = new Wizard(1, 1000000, 13, 0);
     echo 'Sorcier<br>';
     $wizardOne->describe();
     echo '<br><br>';
 
-    $archerOne = new Archer(1, 12, 3);
+    $archerOne = new Archer(1, 16, 3);
     echo 'Archer<br>';
     $archerOne->describe();
     echo '<br><br>';
@@ -68,9 +68,11 @@
     if($hpWarrior >= 1) {
         echo "Il survit avec ".$hpWarrior." points de vie et décide de contre-attaquer, infligeant ".$warriorOne->getSword()." points de dégâts à l'archer !";
         $archerOne->setLife($archerOne->getLife() - $warriorOne->getSword());
+        $hpArcher = $archerOne->getLife();
         echo '<br>';
-        if($archerOne->getLife() >= 1) {
+        if($hpArcher >= 1) {
             echo "L'archer survit !";
+            $archerOne->setLife($hpArcher);
         } else {
             echo "L'archer ne survit pas à l'assaut. Il meurt sur le coup.";
         }
@@ -89,7 +91,36 @@
     if($wizardOne->getLife() >= 1) {
         echo "Le sorcier à gagner !";
     }
+    echo '<br><br>';
     
+    if($hpWizard >= 1 && $hpWarrior >= 1 && $archerOne->getLife() >= 1){
+        
+        echo 'A NEW CHALLENGER IS APPROACHING !!!<br>';
+
+        $warriorTwo = new Warrior(1000, 1000, 1000);
+        
+        echo 'Les combattants ne peuvent pas gagner s\'ils n\'unissent pas leurs forces !<br><br>';
+
+        $heal = $wizardOne->getHeal();
+        if($hpWizard >= 9 && $hpWarrior >= 9 && $hpArcher >= 9) {
+            echo "Nos combattants ont décidés de s'allier dans cette ultime bataille. Le sorcier utilise son sort de soin le plus puissant qu'il possède, ce qui permet à nos combattants de récupérer ".$heal." points de vie.";
+            echo '<br><br>';
+            $new_hpWarrior = ($hpWarrior + $heal);
+            $new_hpWizard = ($hpWizard + $heal);
+            $new_hpArcher = ($hpArcher + $heal);
+            echo "Nos héros possèdent respectivement ".$new_hpWarrior.", ".$new_hpWizard.", ".$new_hpArcher;
+            if($new_hpWarrior < 50000 ||$new_hpWizard < 50000 || $new_hpArcher < 50000) {
+                echo '<br>';
+                echo "n'ayant pas assez d'endurance pour continuer, nos combattants s'éffondre sur le champ de bataille. La créature dévorant nos champions par la même occasion ...";
+            } else {
+                echo '<br>';
+                echo 'Grâce au sorcier, nos combattants ont pu abattre l\'ennemie et sauver le monde !<br><p style="text-align: center;">VICTOIRE</p>';
+            }
+        } else {
+            echo 'Nos combattants n\'ont pas sû trouver un terrain d`\'entente. La créature en a profité pour tous les tuer ...<br><p style="text-align: center;">GAME OVER</p>';
+        }
+    }
+
     
     ?>
 </body>
