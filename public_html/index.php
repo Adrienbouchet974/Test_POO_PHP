@@ -38,16 +38,16 @@
     $archerOne->describe();
     echo '<br><br>';
 
-    $warriorOne->setSword(1);
-    $archerOne->setBow(1);
-    $wizardOne->setStaff(1);
+    $warriorOne->setSword(10);
+    $archerOne->setBow(10);
+    $wizardOne->setStaff(10);
 
 
     echo 'Le guerrier attaque le sorcier !<br> Il subît '.$warriorOne->getSword().' points de dégâts ! ';
     $hpWizard = ($wizardOne->getLife() - $warriorOne->getSword());
     if($hpWizard >= 1) {
         $hpWarrior = ($warriorOne->getLife() - $wizardOne->getStaff());
-        echo'Le sorcier survit à l\'assaut du guerrier avec '.$hpWizard.' points de vie. Il riposte alors avec un sort qui lui infige '.$hpWarrior.' points de dégâts !';
+        echo'Le sorcier survit à l\'assaut du guerrier avec '.$hpWizard.' points de vie. Il riposte alors avec un sort qui lui infige '.$wizardOne->getStaff().' points de dégâts !';
         $warriorOne->setLife($hpWarrior);
         if($hpWarrior >= 1) {
             echo " Il survit !";
@@ -66,7 +66,7 @@
     echo 'L\'archer tire une flèche sur le guerrier !<br> Il subît '.$archerOne->getBow().' points de dégâts ! ';
     $hpWarrior = ($warriorOne->getLife() - $archerOne->getBow());
     if($hpWarrior >= 1) {
-        echo "Il survit avec ".$hpWarrior." points de vie et décide de contre-attaquer, infligeant ".$archerOne->getBow()." points de dégâts à l'archer !";
+        echo "Il survit avec ".$hpWarrior." points de vie et décide de contre-attaquer, infligeant ".$warriorOne->getSword()." points de dégâts à l'archer !";
         $archerOne->setLife($archerOne->getLife() - $warriorOne->getSword());
         echo '<br>';
         if($archerOne->getLife() >= 1) {
