@@ -39,7 +39,7 @@ class Wizard extends Character {
     private $heal;
 
     // Constructor
-    public function __construct ($s, $h, $a, $b) {
+    public function __construct ($s = 0, $h = 0, $a = 0, $b = 0) {
         parent::__construct($a, $b);
         $this->setStaff($s);
         $this->setHeal($h);
@@ -71,7 +71,7 @@ class Archer extends Character {
     private $bow;
 
     // Constructor
-    public function __construct ($s, $a, $b) {
+    public function __construct ($s = 0, $a = 0, $b = 0) {
         parent::__construct($a, $b);
         $this->setBow($s);
     }
