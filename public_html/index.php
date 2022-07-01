@@ -23,7 +23,7 @@
     // $warriorTwo = new Character(20, 6);
     // $warriorTwo->describe();
 
-    $warriorOne = new Warrior(1, 20, 6);
+    $warriorOne = new Warrior(10, 20, 6);
     echo 'Guerrier<br>';
     $warriorOne->describe();
     echo '<br><br>';
@@ -129,7 +129,23 @@
     $warriorThree = new Warrior;
     $warriorThree->hydrate($tab);
     $warriorThree->describe();
+
+    include_once('./objects/Manager.php');
+    $manager = new Manager;
+    $manager->read($warriorThree);
     
+    $manager->update($warriorThree, $warriorOne);
+    $manager->read($warriorThree);
+
+    $manager->delete($warriorThree);
+    $manager->read($warriorThree);
+    
+    $tab2 = [
+        "sword" => 50,
+        "life" => 450000,
+        "def" => 450000000
+    ];
+    $manager->create($warriorFour, 10, 5, 895)
     ?>
 </body>
 </html>
