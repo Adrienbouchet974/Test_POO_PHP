@@ -134,19 +134,18 @@
     $manager = new Manager;
     $manager->read($warriorThree);
     
-    // $manager->update($warriorThree, $warriorOne);
-    // $manager->read($warriorThree);
+    $manager->update($warriorThree, $warriorOne);
+    $manager->read($warriorThree);
 
-    // $manager->delete($warriorThree);
-    // $manager->read($warriorThree);
+    $manager->delete($warriorThree);
+    $manager->read($warriorThree);
     
-    $ArcherTwo = new Archer;
-    $manager->create($ArcherTwo, 10, 5, 895);
-    // $manager->delete($ArcherTwo);
-
-    $warriorFour = new Warrior;
-    $manager->create($warriorFour, 100, 50, 2);
-
+    $tab2 = [
+        "sword" => 50,
+        "life" => 450000,
+        "def" => 450000000
+    ];
+    $manager->create($warriorFour, 10, 5, 895)
     ?>
 </body>
 </html>
