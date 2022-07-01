@@ -8,7 +8,7 @@ class Warrior extends Character {
     private $sword;
 
     // Constructor
-    public function __construct ($s, $a, $b) {
+    public function __construct ($s = 12, $a = 10, $b = 0) {
         parent::__construct($a, $b);
         $this->setSword($s);
     }
@@ -24,6 +24,11 @@ class Warrior extends Character {
     }
 
     // Methods
+    public function hydrate($tab) {
+        $this->setSword($tab["sword"]);
+        $this->setLife($tab["life"]);
+        $this->setDef($tab["def"]);
+    }
 
 }
 

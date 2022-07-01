@@ -121,6 +121,14 @@
         }
     }
 
+    $tab = [
+        "sword" => 13,
+        "life" => 45,
+        "def" => 4500
+    ];
+    $warriorThree = new Warrior;
+    $warriorThree->hydrate($tab);
+    $warriorThree->describe();
     
     ?>
 </body>
