@@ -1,6 +1,6 @@
 <?php
 
-include_once('./objects/character.php');
+include_once('./objects/Character.php');
 
 class Warrior extends Character {
 

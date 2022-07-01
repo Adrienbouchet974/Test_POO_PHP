@@ -9,7 +9,7 @@
 <body>
     <?php
     
-    include_once('./objects/warrior.php');
+    include_once('./objects/Warrior.php');
 
     // Model View Controller
     // $warriorOne = new Character;
