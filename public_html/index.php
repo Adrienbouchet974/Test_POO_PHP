@@ -8,144 +8,73 @@
 </head>
 <body>
     <?php
-    
-    include_once('./objects/Warrior.php');
 
-    // Model View Controller
-    // $warriorOne = new Character;
+    include_once './objects/Warrior.php';
+    include_once './objects/Wizard.php';
+    include_once './objects/Archer.php';
+    include_once './objects/Manager.php';
+    include_once './settings/db.php';
 
-    // $warriorOne->setLife(20);
+    //if(false) {
+        // Model View Controller
+        // $warriorOne = new Character;
+        // $warriorOne->describe();
 
-    // $warriorOne->setDef(6);
-
-    // $warriorOne->describe();
-    
-    // $warriorTwo = new Character(20, 6);
-    // $warriorTwo->describe();
-
-    $warriorOne = new Warrior(10, 20, 6);
-    echo 'Guerrier<br>';
-    $warriorOne->describe();
-    echo '<br><br>';
-
-    $wizardOne = new Wizard(1, 1000000, 13, 0);
-    echo 'Sorcier<br>';
-    $wizardOne->describe();
-    echo '<br><br>';
-
-    $archerOne = new Archer(1, 16, 3);
-    echo 'Archer<br>';
-    $archerOne->describe();
-    echo '<br><br>';
-
-    // $warriorOne->setSword(15);
-    // $wizardOne->setStaff(1);
-    // $archerOne->setBow(1);
-
-
-    echo 'Le guerrier attaque le sorcier !<br> Il subît '.$warriorOne->getSword().' points de dégâts ! ';
-    $hpWizard = ($wizardOne->getLife() - $warriorOne->getSword());
-    if($hpWizard >= 1) {
-        $hpWarrior = ($warriorOne->getLife() - $wizardOne->getStaff());
-        echo'Le sorcier survit à l\'assaut du guerrier avec '.$hpWizard.' points de vie. Il riposte alors avec un sort qui lui infige '.$wizardOne->getStaff().' points de dégâts !';
-        $warriorOne->setLife($hpWarrior);
-        if($hpWarrior >= 1) {
-            echo " Il survit !";
-        } else {
-            echo "Il meurt";
-        }
-    } else {
-        echo " Il meurt sur le coup !";
-    }
-    $wizardOne->setLife($hpWizard);
-    echo'<br><br>';
-
-    
-
-    
-    echo 'L\'archer tire une flèche sur le guerrier !<br> Il subît '.$archerOne->getBow().' points de dégâts ! ';
-    $hpWarrior = ($warriorOne->getLife() - $archerOne->getBow());
-    if($hpWarrior >= 1) {
-        echo "Il survit avec ".$hpWarrior." points de vie et décide de contre-attaquer, infligeant ".$warriorOne->getSword()." points de dégâts à l'archer !";
-        $archerOne->setLife($archerOne->getLife() - $warriorOne->getSword());
-        $hpArcher = $archerOne->getLife();
-        echo '<br>';
-        if($hpArcher >= 1) {
-            echo "L'archer survit !";
-            $archerOne->setLife($hpArcher);
-        } else {
-            echo "L'archer ne survit pas à l'assaut. Il meurt sur le coup.";
-        }
-    } else {
-        echo " Il meurt sur le coup !";
-    }
-    $warriorOne->setLife($hpWarrior);
-    echo '<br><br>';
-
-    if($warriorOne->getLife() >= 1) {
-        echo "Le guerrier à gagner ! ";
-    }
-    if($archerOne->getLife() >= 1) {
-        echo "L'archer à gagner ! ";
-    }
-    if($wizardOne->getLife() >= 1) {
-        echo "Le sorcier à gagner !";
-    }
-    echo '<br><br>';
-    
-    if($hpWizard >= 1 && $hpWarrior >= 1 && $archerOne->getLife() >= 1){
+        // $warriorOne->setLife(20);
+        // $warriorOne->setDef(6);
+        // $warriorOne->describe();
         
-        echo 'A NEW CHALLENGER IS APPROACHING !!!<br>';
+        // $warriorTwo = new Character(20, 6);
+        // $warriorTwo->describe();
 
-        $warriorTwo = new Warrior(1000, 1000, 1000);
+        // $warriorOne = new Warrior;
+        // $warriorTwo = new Warrior(12, 30, 3000);
         
-        echo 'Les combattants ne peuvent pas gagner s\'ils n\'unissent pas leurs forces !<br><br>';
+        // $tab = [
+        //     "sword" => 13,
+        //     "life" => 45,
+        //     "def" => 4500
+        // ];
+        // $warriorThree = new Warrior;
+        // $warriorThree->hydrate($tab);
+        
+        // Fight
+        // $warriorThree->setLife(4);
+        
+        // $manager = new Manager;
+        // $manager->create($warriorThree);
 
-        $heal = $wizardOne->getHeal();
-        if($hpWizard >= 9 && $hpWarrior >= 9 && $hpArcher >= 9) {
-            echo "Nos combattants ont décidés de s'allier dans cette ultime bataille. Le sorcier utilise son sort de soin le plus puissant qu'il possède, ce qui permet à nos combattants de récupérer ".$heal." points de vie.";
-            echo '<br><br>';
-            $new_hpWarrior = ($hpWarrior + $heal);
-            $new_hpWizard = ($hpWizard + $heal);
-            $new_hpArcher = ($hpArcher + $heal);
-            echo "Nos héros possèdent respectivement ".$new_hpWarrior.", ".$new_hpWizard.", ".$new_hpArcher;
-            if($new_hpWarrior < 50000 ||$new_hpWizard < 50000 || $new_hpArcher < 50000) {
-                echo '<br>';
-                echo "n'ayant pas assez d'endurance pour continuer, nos combattants s'éffondre sur le champ de bataille. La créature dévorant nos champions par la même occasion ...";
-            } else {
-                echo '<br>';
-                echo 'Grâce au sorcier, nos combattants ont pu abattre l\'ennemie et sauver le monde !<br><p style="text-align: center;">VICTOIRE</p>';
-            }
-        } else {
-            echo 'Nos combattants n\'ont pas sû trouver un terrain d`\'entente. La créature en a profité pour tous les tuer ...<br><p style="text-align: center;">GAME OVER</p>';
-        }
-    }
+        // Create Warrior
+        //$tab = ["sword" => 14, "life" => 40, "def" => 13];
+       // $warrior = new Warrior;
+        //$warrior->hydrate($tab);
+        
+        // Create wizard
+        //$tab = ["staff" => 13, "life" => 15, "def" => 7];
+        //$wizard = new Wizard;
+        //$wizard->hydrate($tab);
+        
+        // Create archer
+        //$tab = ["bow" => 20, "life" => 20, "def" => 5];
+        //$archer = new Archer;
+        //$archer->hydrate($tab);
 
-    $tab = [
-        "sword" => 13,
-        "life" => 45,
-        "def" => 4500
-    ];
-    $warriorThree = new Warrior;
-    $warriorThree->hydrate($tab);
-    $warriorThree->describe();
+        // Manager
+        //$manager = new Manager;
+        //$manager->read($warrior);
+        //$manager->read($wizard);
+        //$manager->read($archer);
 
-    include_once('./objects/Manager.php');
-    $manager = new Manager;
-    $manager->read($warriorThree);
+    //}
     
-    $manager->update($warriorThree, $warriorOne);
-    $manager->read($warriorThree);
+    $tank = new Warrior(21, 41, 31);
 
-    $manager->delete($warriorThree);
-    $manager->read($warriorThree);
+    $manager = new Manager($db);
+    $manager->create($tank);
+
     
-    $tab2 = [
-        "sword" => 50,
-        "life" => 450000,
-        "def" => 450000000
-    ];
-    $manager->create($warriorFour, 10, 5, 895)
+
+    
     ?>
 </body>
 </html>

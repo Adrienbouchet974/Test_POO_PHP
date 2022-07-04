@@ -1,31 +1,31 @@
 <?php
 include_once './objects/Character.php';
 
-class Warrior extends Character {
+class Wizard extends Character {
 
     // Attributes
-    private $sword;
+    private $staff;
 
     // Constructor
-    public function __construct($sword = 12, $life = 10, $def = 0) {
-        $this->setSword($sword);
+    public function __construct($staff = 12, $life = 10, $def = 0) {
+        $this->setStaff($staff);
         parent::__construct($life, $def);
     }
 
     // Getters
-    public function getSword() {
-        return $this->sword;
+    public function getStaff() {
+        return $this->staff;
     }
 
     // Setters
-    public function setSword($sword) {
+    public function setStaff($staff) {
         // Secure ...
-        $this->sword = $sword;
+        $this->staff = $staff;
     }
 
     // Methods
     public function hydrate($tab) {
-        $this->setSword($tab["sword"]);
+        $this->setStaff($tab["staff"]);
         $this->setLife($tab["life"]);
         $this->setDef($tab["def"]);
     }
