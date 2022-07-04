@@ -49,11 +49,6 @@ class Manager {
             $sql->execute();
         }
 
-        if (get_class($perso) !== "Warrior" || "Wizard" || "Archer") {
-            // INSERT INTO `unknown` (`id` , `life`, `def`, `attack`) VALUES (NULL, '20', '40', '30')
-            echo "Vous n'avez pas crée de personnage.";
-        }
-
     }
 
     public function read($perso) {
@@ -71,32 +66,41 @@ class Manager {
     public function update($perso, $attack, $life, $def, $id) {
 
         if (get_class($perso) == "Warrior") {
-            // INSERT INTO `warrior` (`id` , `life`, `def`, `sword`) VALUES (NULL, '20', '40', '30')
             $sql = $this->bdd->prepare("UPDATE `warrior` SET `life`='$life',`def`='$def',`sword`='$attack' WHERE `id`='$id'");
             $sql->execute();
         }
 
-        // elseif Wizard
-        // ...
+        if (get_class($perso) == "Wizard") {
+            $sql = $this->bdd->prepare("UPDATE `wizard` SET `life`='$life',`def`='$def',`sword`='$attack' WHERE `id`='$id'");
+            $sql->execute();
+        }
 
-        // elseif Ark
-        // ...
+        if (get_class($perso) == "Archer") {
+            $sql = $this->bdd->prepare("UPDATE `archer` SET `life`='$life',`def`='$def',`sword`='$attack' WHERE `id`='$id'");
+            $sql->execute();
+        }
 
         // else unknown object
         // ...
 
     }
 
-    public function delete($perso) {
+    public function delete($perso, $id) {
 
-        // if Warrior
-        // ...
+        if (get_class($perso) == "Warrior") {
+            $sql = $this->bdd->prepare("DELETE FROM `warrior` WHERE `id`='$id'");
+            $sql->execute();
+        }
 
-        // elseif Wizard
-        // ...
+        if (get_class($perso) == "Wizard") {
+            $sql = $this->bdd->prepare("DELETE FROM `wizard` WHERE `id`='$id'");
+            $sql->execute();
+        }
 
-        // elseif Ark
-        // ...
+        if (get_class($perso) == "Archer") {
+            $sql = $this->bdd->prepare("DELETE FROM `archer` WHERE `id`='$id'");
+            $sql->execute();
+        }
 
         // else unknown object
         // ...

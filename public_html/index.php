@@ -70,8 +70,8 @@
     $manager = new Manager($db);
     
     $tank = new Warrior(21, 41, 31);
-    $manager->create($tank);
-    $manager->update($tank, 10, 10, 10, 2);
+    // $manager->create($tank);
+    $manager->update($tank, 10, 10, 10, 3);
 
     $mage = new Wizard(30, 20, 10);
     $manager->create($mage);
