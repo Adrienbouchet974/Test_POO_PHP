@@ -31,11 +31,23 @@ class Manager {
             $sql->execute();
         }
 
-        // elseif Wizard
-        // ...
+        if (get_class($perso) == "Wizard") {
+            // INSERT INTO `wizard` (`id` , `life`, `def`, `staff`) VALUES (NULL, '20', '40', '30')
+            $sql = $this->bdd->prepare("INSERT INTO `wizard` (`id` , `life`, `def`, `staff`) VALUES (NULL, :life, :def, :staff)");
+            $sql->bindValue(":life", $perso->getLife(), PDO::PARAM_INT);
+            $sql->bindValue(":def", $perso->getDef(), PDO::PARAM_INT);
+            $sql->bindValue(":staff", $perso->getStaff(), PDO::PARAM_INT);
+            $sql->execute();
+        }
 
-        // elseif Archer
-        // ...
+        if (get_class($perso) == "Archer") {
+            // INSERT INTO `archer` (`id` , `life`, `def`, `bow`) VALUES (NULL, '20', '40', '30')
+            $sql = $this->bdd->prepare("INSERT INTO `archer` (`id` , `life`, `def`, `bow`) VALUES (NULL, :life, :def, :bow)");
+            $sql->bindValue(":life", $perso->getLife(), PDO::PARAM_INT);
+            $sql->bindValue(":def", $perso->getDef(), PDO::PARAM_INT);
+            $sql->bindValue(":bow", $perso->getBow(), PDO::PARAM_INT);
+            $sql->execute();
+        }
 
         // else unknown object
         // ...

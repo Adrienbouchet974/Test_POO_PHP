@@ -66,13 +66,17 @@
         //$manager->read($archer);
 
     //}
-    
-    $tank = new Warrior(21, 41, 31);
 
     $manager = new Manager($db);
+    
+    $tank = new Warrior(21, 41, 31);
     $manager->create($tank);
 
-    
+    $mage = new Wizard(30, 20, 10);
+    $manager->create($mage);
+
+    $archer = new Archer(25, 25, 15);
+    $manager->create($archer);
 
     
     ?>
