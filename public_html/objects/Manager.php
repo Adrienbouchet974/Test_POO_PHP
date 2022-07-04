@@ -49,8 +49,10 @@ class Manager {
             $sql->execute();
         }
 
-        // else unknown object
-        // ...
+        if (get_class($perso) !== "Warrior" || "Wizard" || "Archer") {
+            // INSERT INTO `unknown` (`id` , `life`, `def`, `attack`) VALUES (NULL, '20', '40', '30')
+            echo "Vous n'avez pas crée de personnage.";
+        }
 
     }
 
@@ -66,10 +68,13 @@ class Manager {
 
     }
 
-    public function update($perso) {
+    public function update($perso, $attack, $life, $def, $id) {
 
-        // if Warrior
-        // ...
+        if (get_class($perso) == "Warrior") {
+            // INSERT INTO `warrior` (`id` , `life`, `def`, `sword`) VALUES (NULL, '20', '40', '30')
+            $sql = $this->bdd->prepare("UPDATE `warrior` SET `life`='$life',`def`='$def',`sword`='$attack' WHERE `id`='$id'");
+            $sql->execute();
+        }
 
         // elseif Wizard
         // ...
